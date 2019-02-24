@@ -32,11 +32,10 @@ function reducer(state = kanbanData, action) {
     switch (action.type) {
         
         case 'ADD_CARD':
-            let updatedColumns = [...state.columns];
-            let modifiedColumn = updatedColumns.findIndex(o => o.title == action.title);
-            updatedColumns[modifiedColumn].cards = updatedColumns[modifiedColumn].cards.concat(action.card);
-            console.log(updatedColumns);
-            return Object.assign({}, state, {columns: updatedColumns});
+            let columns = [...state.columns];
+            let modifiedColumn = columns.findIndex(o => o.title == action.title);
+            columns[modifiedColumn].cards = columns[modifiedColumn].cards.concat(action.card);
+            return Object.assign({}, state, {columns});
         default:
             return state;
     }
